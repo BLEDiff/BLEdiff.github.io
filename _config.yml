@@ -8,6 +8,6 @@ theme: jekyll-theme-cayman
 github:
   owner_url: https://github.com/BLEDiff
   owner_name: BLEDiff
-  repository_url: https://github.com/BLEDiff/BLEDiff
+  repository_url: https://blediff.github.io/
   repository_name: BLEDiff.github.io
   is_project_page: true
