@@ -6,7 +6,7 @@ plugins:
 show_downloads: false
 theme: jekyll-theme-cayman
 github:
-  owner_url: https://github.com/BLEdiff
+  owner_url: https://github.com/BLEDiff
   owner_name: BLEDiff
-  repository_url: https://github.com/BLEdiff/BLEDiff\
+  repository_url: https://github.com/BLEDiff/BLEDiff
   is_project_page: true
