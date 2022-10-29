@@ -12,27 +12,27 @@ Due to responsible disclosure, we are not releasing the details of the affected 
 
 ## Responsible Disclosure Progress
 
-| Vendor           | head two                                                     | Comment                          |
-|:-----------------|:-------------------------------------------------------------|:---------------------------------|
-| Google           | Confirmed 1 issue with high severity, rest 2 in discussion   |                                  |
-| Nordic           | Confirmed                                                    | CVE-2022-XXXXXX, CVE-2022-XXXXXX |
-| STM              | Confirmed                                                    | CVE-2022-XXXXXX, CVE-2022-XXXXXX |
-| Huawei           | Confirmed 1 issue, rest 2 are in discussion                  |                                  |
-| Bluetooth SIG    | In progress                                                  |                                  |
-| Cypress          | In progress                                                  |                                  |
-| Texas Instrument | In progress                                                  |                                  |
-| Espressif        | In progress                                                  |                                  |
-| Dialog           | In progress                                                  |                                  |
-| Microchip        | In progress                                                  |                                  |
-| Motorola         | In progress                                                  |                                  |
-| Samsung          | In progress                                                  |                                  |
-| Apple            | In progress                                                  |                                  |
-| HTC              | In progress                                                  |                                  |
-| Honor            | In progress                                                  |                                  |
-| Xiaomi           | In progress                                                  |                                  |
-| Oneplus          | In progress                                                  |                                  |
-| Lenovo           | In progress                                                  |                                  |
-| BlueZ            | In progress                                                  |                                  |
+| Vendor           | Progress                                                         | Comment                          |
+|:-----------------|:---------------------------------------------------------------- |:---------------------------------|
+| Google           | Confirmed with high severity based on [Google's severity assessment Matrix] (https://source.android.com/docs/security/overview/updates-resources#severity)        |                                  |
+| Nordic           | Confirmed                                                        | CVE-2022-XXXXXX, CVE-2022-XXXXXX |
+| STM              | Confirmed                                                        | CVE-2022-XXXXXX, CVE-2022-XXXXXX |
+| Huawei           | Confirmed 1 issue, rest 2 are in discussion                      |                                  |
+| Bluetooth SIG    | In progress                                                      |                                  |
+| Cypress          | In progress                                                      |                                  |
+| Texas Instrument | In progress                                                      |                                  |
+| Espressif        | In progress                                                      |                                  |
+| Dialog           | In progress                                                      |                                  |
+| Microchip        | In progress                                                      |                                  |
+| Motorola         | In progress                                                      |                                  |
+| Samsung          | In progress                                                      |                                  |
+| Apple            | In progress                                                      |                                  |
+| HTC              | In progress                                                      |                                  |
+| Honor            | In progress                                                      |                                  |
+| Xiaomi           | In progress                                                      |                                  |
+| Oneplus          | In progress                                                      |                                  |
+| Lenovo           | In progress                                                      |                                  |
+| BlueZ            | In progress                                                      |                                  |
 
 
 _Note: The CVE numbers are anonymized in order to preserve double blind review process._
