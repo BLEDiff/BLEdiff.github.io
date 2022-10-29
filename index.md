@@ -14,7 +14,7 @@ Due to responsible disclosure, we are not releasing the details of the affected 
 
 | Vendor           | Progress                                                         | Comment                          |
 |:-----------------|:---------------------------------------------------------------- |:---------------------------------|
-| Google           | Confirmed with high severity based on <a href="https://source.android.com/docs/security/overview/updates-resources#severity"> Google's severity assessment Matrix </a>           |                                  |
+| Google           | Confirmed with high severity based on <a href="https://source.android.com/docs/security/overview/updates-resources#severity"> Google's severity assessment matrix </a>           |                                  |
 | Nordic           | Confirmed                                                        | CVE-2022-XXXXXX, CVE-2022-XXXXXX |
 | STM              | Confirmed                                                        | CVE-2022-XXXXXX, CVE-2022-XXXXXX |
 | Huawei           | Confirmed 1 issue, rest 2 are in discussion                      |                                  |
