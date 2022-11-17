@@ -20,6 +20,7 @@ Due to responsible disclosure, we are not releasing the details of the affected 
 | Nordic           | Confirmed                                                        | CVE-2022-XXXXXX, CVE-2022-XXXXXX |
 | STM              | Confirmed                                                        | CVE-2022-XXXXXX |
 | Microchip        | Confirmed                                                        | CVE-2022-XXXXXX, CVE-2022-XXXXXX, CVE-2022-XXXXXX, CVE-2022-XXXXXX |
+| Samsung          | Confirmed                                                        |                                  |
 | Huawei           | Confirmed 1 issue, rest 2 are in discussion                      |                                  |
 | Bluetooth SIG    | In progress                                                      |                                  |
 | Cypress          | In progress                                                      |                                  |
@@ -27,7 +28,6 @@ Due to responsible disclosure, we are not releasing the details of the affected 
 | Espressif        | In progress                                                      |                                  |
 | Dialog           | In progress                                                      |                                  |
 | Motorola         | In progress                                                      |                                  |
-| Samsung          | In progress                                                      |                                  |
 | Apple            | In progress                                                      |                                  |
 | HTC              | In progress                                                      |                                  |
 | Honor            | In progress                                                      |                                  |
