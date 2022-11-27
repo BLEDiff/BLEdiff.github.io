@@ -16,12 +16,12 @@ Due to responsible disclosure, we are not releasing the details of the affected 
 
 | Vendor           | Progress                                                         | Comment                          |
 |:-----------------|:---------------------------------------------------------------- |:---------------------------------|
-| Google           | Confirmed 2 with high severity based on <a href="https://source.android.com/docs/security/overview/updates-resources#severity"> Google's severity assessment matrix </a>           |                                  |
+| Google           | Confirmed                                                        |                                  |
 | Nordic           | Confirmed                                                        | CVE-2022-XXXXXX, CVE-2022-XXXXXX |
 | STM              | Confirmed                                                        | CVE-2022-XXXXXX |
 | Microchip        | Confirmed                                                        | CVE-2022-XXXXXX, CVE-2022-XXXXXX, CVE-2022-XXXXXX, CVE-2022-XXXXXX |
 | Samsung          | Confirmed                                                        |                                  |
-| Huawei           | Confirmed 1 issue, rest 2 are in discussion                      |                                  |
+| Huawei           | Confirmed                                                        | HWPSIRT-2022-XXXXX, HWPSIRT-2022-XXXXX, HWPSIRT-2022-XXXXX                                  |
 | Bluetooth SIG    | In progress                                                      |                                  |
 | Cypress          | In progress                                                      |                                  |
 | Texas Instrument | In progress                                                      |                                  |
