@@ -6,6 +6,8 @@ The Bluetooth Low Energy (BLE) is regarded as the most popular short range wirel
 
 **BLEDiff** provides an automated black-box noncompliance checking framework for BLE devices and identifies several security issues in the tested devices.
 
+# BLEDiff has been accepted to IEEE S&P 2023
+
 ## Identified Vulnerabilities
 Due to responsible disclosure, we are not releasing the details of the vulnerabilities yet. We will provide the details of the identified vulnerabilities when the responsible disclosure process is complete.
 
@@ -22,19 +24,19 @@ Due to responsible disclosure, we are not releasing the details of the affected 
 | Microchip        | Confirmed                                                        | CVE-2022-XXXXXX, CVE-2022-XXXXXX, CVE-2022-XXXXXX, CVE-2022-XXXXXX |
 | Samsung          | Confirmed                                                        |                                  |
 | Huawei           | Confirmed                                                        | HWPSIRT-2022-XXXXX, HWPSIRT-2022-XXXXX, HWPSIRT-2022-XXXXX                                  |
-| Bluetooth SIG    | In progress                                                      |                                  |
-| Cypress          | In progress                                                      |                                  |
-| Texas Instrument | In progress                                                      |                                  |
-| Espressif        | In progress                                                      |                                  |
-| Dialog           | In progress                                                      |                                  |
-| Motorola         | In progress                                                      |                                  |
-| Apple            | In progress                                                      |                                  |
-| HTC              | In progress                                                      |                                  |
-| Honor            | In progress                                                      |                                  |
-| Xiaomi           | In progress                                                      |                                  |
-| Oneplus          | In progress                                                      |                                  |
-| Lenovo           | In progress                                                      |                                  |
-| BlueZ            | In progress                                                      |                                  |
+| Bluetooth SIG    | Under review                                                      |                                  |
+| Cypress          | Under review                                                  |                                  |
+| Texas Instrument | Under review                                                    |                                  |
+| Espressif        | Under review                                                     |                                  |
+| Dialog           | Under review                                                      |                                  |
+| Motorola         | Under review                                                     |                                  |
+| Apple            | No security impact                                                      |                                  |
+| HTC              | Under review                                                    |                                  |
+| Honor            | Under review                                                      |                                  |
+| Xiaomi           | Under review                                                        |                                  |
+| Oneplus          | Under review                                                    |                                  |
+| Lenovo           | Under review                                                      |                                  |
+| BlueZ            | Under review                                                     |                                  |
 
 
 _Note: The CVE numbers are anonymized in order to preserve double blind review process._
