@@ -9,7 +9,11 @@ The Bluetooth Low Energy (BLE) is regarded as the most popular short range wirel
 # BLEDiff has been accepted to IEEE S&P 2023
 
 ## Identified Vulnerabilities
-Due to responsible disclosure, we are not releasing the details of the vulnerabilities yet. We will provide the details of the identified vulnerabilities when the responsible disclosure process is complete.
+
+### (E1) Passkey Entry Bypass.
+Among the four association methods, passkey entry is considered secure against Man-in-the-Middle (MitM) attacks. In this method, the initiating device displays a randomly generated value, which the responding device has to enter. Particularly, after the central sends a _PairConfirmSend_ message, a prompt is shown on the peripheral device for passkey entry. In LE legacy pairing, the peripheral device shall send a _PairRandomSend_ only if the _confirm_ value ( $\mathsf{C_{cmp}}$ ) computed on the device matches the _confirm_ value ( $\mathsf{C_{rcv}}$ ) received from the central device , i.e., when $\mathsf{C_{cmp} = C_{rcv}}$. If $\mathsf{C_{cmp} \neq C_{rcv}}$, then the responding device would terminate the pairing. **BLEDiff**, however, has uncovered 13 implementations where the device completes pairing and bonding without requiring to enter the passkey in the device and  thereby effectively nullifying all the security protections against MitM attacks. 
+
+
 
 ## Affected Devices
 Due to responsible disclosure, we are not releasing the details of the affected devices yet. We will provide the details of the affected devices and corresponding issues when the responsible disclosure process is complete.
