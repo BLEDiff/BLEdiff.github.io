@@ -1,0 +1,42 @@
+
+
+<h3> <b>(E1)</b> Bypassing passkey entry in legacy pairing</h3> 
+
+<p align="justify">
+Among the four association methods, passkey entry is considered secure against Man-in-the-Middle (MitM) attacks. In this method, the initiating device displays a randomly generated value, which the responding device has to enter. Particularly, after the central sends a _PairConfirmSend_ message, a prompt is shown on the peripheral device for passkey entry. In LE legacy pairing, the peripheral device shall send a _PairRandomSend_ only if the _confirm_ value (C_<sub>cmp</sub>) computed on the device matches the _confirm_ value (C_<sub>rcv</sub>) received from the central device , i.e., when C_<sub>cmp</sub> = C_<sub>rcv</sub>. Otherwise, the responding device would terminate the pairing. **BLEDiff**, however, has uncovered 13 implementations where the device completes pairing and bonding without requiring to enter the passkey in the device and  thereby effectively nullifying all the security protections against MitM attacks.  
+</p>
+
+
+<div align="center">
+  <img src="assets/figures/ble-issue4.png" alt="Bypassing passkey entry in legacy pairing" align="center"/> <br>
+  Fig.: Bypassing passkey entry in legacy pairing
+</div>
+
+<p align="justify">
+In this deviation, if the central sends a _PairRandomSend_, setting the value of the user input passkey to zero, the deviating BLE peripheral implementation responds with a _PairRandomSend_, without sending a _PairConfirmSend_ message and even before taking the input from the user (deviating from the standards). The connection persists even after the user inputs the passkey after an attack with the deviation is performed. Furthermore, the peripheral implementation completes the pairing and bonding process and enables encryption, all assuming the user input to be zero. Surprisingly, one of the devices (Pixel 4a) does not even show the prompt for passkey entry, thus effectively bypassing the MitM protection put into place through the passkey entry association method. This issue has been assigned .  
+
+The root cause of this issue can be attributed to implementation deviating from the specification. The BLE specification clearly states that if the confirm values do not match, the peripheral should not proceed with pairing. 
+
+Due to this passkey entry bypass, it is possible for the attacker to perform a MitM attack on the vulnerable BLE devices. As the key value, _TK_, is always set to zero for the vulnerable peripheral, the attacker can impersonate both legitimate central and peripheral devices. In a hindsight, this is actually worse than just works association method as the user thinks they are using a high level of protection, but actually, they are not.
+</p>
+
+
+
+<h3> <b>(E2)</b> Out-Of-Band Authentication Bypass </h3> 
+
+<p align="justify">
+During pairing, an out-of-band (OOB) channel, e.g., NFC may be used to communicate information between central and peripheral, which is further used later in the pairing process. The _OOB data flag_ shall be set if a device has the peer device's out-of-band authentication data. A device uses the peer device's out-of-band authentication data to authenticate the peer device. More specifically, after public key exchange when a device receives the OOB confirm value, if the confirm value does not match, or the peripheral does not have the central's OOB data, then the device should immediately abort the pairing process by sending _PairFailed_ message. However, **BLEDiff** found 6 implementations where without receiving any OOB confirm data, the peripheral devices proceed to the next step, i.e., random value exchange, completely bypassing the authentication. To make matters worse, the implementations even pass _DHKeyCheckSend_ with _rb_ set to zero and complete pairing and bonding altogether.
+</p>
+
+<div align="center">
+  <img src="assets/figures/ble-issue3.png" alt="Out-Of-Band Authentication Bypass" align="center"/> <br>
+  Fig.: Out-Of-Band Authentication Bypass
+</div>
+
+<p align="justify">
+The root cause of this issue is that the implementation is deviating from standards. In the specification, it is mandated that if the confirm value received from OOB does not match the calculated value, the peripheral will abort the pairing process
+
+An attacker in the radio range can abuse this vulnerability to completely bypass OOB authentication in the affected BLE devices, which rely on secure connections with out-of-band data to protect user privacy.  As the OOB authentication is bypassed, an attacker can send the usual BLE packets, impersonate both the legitimate central and peripheral, and perform MitM attacks on BLE connections. 
+</p>
+
+
