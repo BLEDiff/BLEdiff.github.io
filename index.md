@@ -45,31 +45,8 @@ In this deviation, if the central sends a _PairRandomSend_, setting the value of
 
 ## Responsible Disclosure Progress
 
-| Vendor           | Progress                                                         | Comment                          |
-|:-----------------|:---------------------------------------------------------------- |:---------------------------------|
-| Google           | Confirmed                                                        |                                  |
-| Nordic           | Confirmed                                                        | CVE-2022-40480, CVE-2022-41768 |
-| STM              | Confirmed                                                        | CVE-2022-45189 |
-| Microchip        | Confirmed                                                        | CVE-2022-40480, CVE-2022-45190, CVE-2022-45192, CVE-2022-45191 |
-| Samsung          | Confirmed                                                        |                                  |
-| Huawei           | Confirmed                                                        | HWPSIRT-2022-56262, HWPSIRT-2022-13244, HWPSIRT-2022-96208                                  |
-| Bluetooth SIG    | Under review                                                      |                                  |
-| Cypress          | Under review                                                  |                                  |
-| Texas Instrument | Under review                                                    |                                  |
-| Espressif        | Under review                                                     |                                  |
-| Dialog           | Under review                                                      |                                  |
-| Motorola         | Under review                                                     |                                  |
-| Apple            | No security impact                                                      |                                  |
-| HTC              | Under review                                                    |                                  |
-| Honor            | Under review                                                      |                                  |
-| Xiaomi           | Under review                                                        |                                  |
-| Oneplus          | Under review                                                    |                                  |
-| Lenovo           | Under review                                                      |                                  |
-| BlueZ            | Under review                                                     |                                  |
 
-
-_Note: The CVE numbers are anonymized in order to preserve double blind review process._
-
+<div align="center" data-include="assets/tables/responsible-disclosure.html"></div>
 
 ## Open Source Implementation  
 
