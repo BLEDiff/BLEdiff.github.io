@@ -91,3 +91,56 @@ When a device receives a <i>ConReq</i> with the <i>timeout</i> field set to zero
 <br>
 An attacker in the radio range can exploit the issue to cause a surreptitious denial of service of the Bluetooth. Though this attack is on BLE, the smartphone turns off both BLE and BR/EDR without notifying the user. To resolve this, the user has to manually restart BLE and, in some cases, the smartphone altogether.
 </p>
+
+
+
+<h3> <b>(E7)</b> Accepts <i>PauseEncReqPlainText</i> before pairing is complete </h3> 
+
+<p align="justify">
+In this deviation, the device responds with a <i>PauseEncResp</i> in case a plaintext <i>PauseEncReq</i> is sent. As a result, the affected device moves to an incorrect  state of the implementation where it is not able to complete pairing and not able to communicate with a specific central device. As stated in the previous section, responding to an invalid message is a noncompliance. We found this issue in 5 different BLE implementations.
+<br>
+The implementation goes to an incorrect state and  discards subsequent messages from the central. The deviation thus enables an attacker to induce DoS attacks on the affected devices. An correctly implemented device ignores plaintext <i>PauseEncReq</i> messages and does not change state.
+</p>
+
+
+
+<h3> <b>(E8)</b> Issue with incomplete PairReq </h3> 
+
+<p align="justify">
+In this deviation, the implementations do not respond to subsequent <i>PairReq</i>s if the first <i>PairReq</i> is not properly completed. In such a case, the peripherals stop advertising altogether and are not able to communicate with <i>any</i> central device within their radio range. This is a noncompliance with the standards as one connection should not affect the other subsequent connections. An attacker in radio range acting as a central can initiate a pairing but abruptly close the connection. This will create a service disruption in the affected devices as those devices will not respond to any other legitimate device in the radio range.
+</p>
+
+
+<h3> <b>(E9)</b> Accepts <i>PairRandomSend</i> before exchanging public keys </h3> 
+
+<p align="justify">
+The affected devices deviate from the standard by responding to a <i>PairRandomSend</i> message before authentication and <i>PublicKeySend</i>. Because of accepting <i>PairRandomSend</i>, the implementations move to an incorrect state from which it cannot complete the pairing procedure. Exploiting this an attacker can force the vulnerable device to stop communicating with a specific central device. Although the standard specifies the regular protocol flow, it does not explicitly state how to handle out-of-order protocol messages. Hence, this behavior can be attributed due to the underspecification of the standards.
+</p>
+
+
+<h3> <b>(E10)</b> Accepts <i>PairConfirmSend</i> with wrong values </h3> 
+
+<p align="justify">
+The affected devices respond to <i>PairConfirmSend</i> request with wrong confirm values. The deviation occurs when a <i>PairReq</i> is sent with the secure connection flags turned on or the OOB flag turned on. Due to this, the implementations go to an unintended state, and do not complete pairing and bonding anymore. In the correct implementations, the devices ignore  <i>PairConfirmSend</i> and proceed with pairing as mandated by the standard. 
+</p>
+
+
+<h3> <b>(I1)</b> Issue with reject messages </h3> 
+
+<p align="justify">
+In case a device receives an invalid message, it can respond with a reject message. However, the specification does not specify the order of the reject messages in a order sequence. In our experiments, the implementations respond at different places in case of invalid messages and this can create a potential interoperability issue among different devices. For instance, in case a device receives a <i>PublicKeySend</i> with an invalid key, (i) some implementations send a reject message as soon as the invalid message is received; (ii) some implementations still continue with the subsequent procedures and respond to  <i>DHKeyCheckSend</i> with a reject message; (iii) some implementations do not send any reject messages. We found 16 devices following (iii), 6 devices following (i), and 3 devices following (ii).
+</p>
+
+
+<h3> <b>(I2)</b> Issue with OOB pairing failed </h3> 
+
+<p align="justify">
+In case of pairing with OOB data, if the confirm value fails, then the pairing should be aborted right away. However, <b>BLEDiff</b> found implementations where even after the confirm value fails, the implementations still proceed with random value exchange. This deviates from the standards and can cause potential interoperability issues. One thing to be noted, in these implementations, the pairing eventually fails during <i>DHKeyCheckSend</i>, and it is not possible to pair and bond with the device. 
+</p>
+
+
+<h3> <b>(O1)</b> Accepting key size greater than max </h3> 
+
+<p align="justify">
+In this deviation, an implementation accepts <i>PairReq</i> with a key size greater than the max value of 16 bytes. The specification mandates using a key size of 7 to 16 bytes; however, in this case, the implementation becomes noncompliant by accepting a key size greater than the max value. A similar issue was found by <a href="https://doi.org/10.1145/3488932.3523258">Pferscher et al.</a> in a different device. Although this is a deviation from the standard, it is not evident how this can be exploited. 
+</p>
