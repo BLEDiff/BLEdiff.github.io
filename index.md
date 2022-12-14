@@ -15,10 +15,11 @@ The Bluetooth Low Energy (BLE) is regarded as the most popular short range wirel
 
 Among the four association methods, passkey entry is considered secure against Man-in-the-Middle (MitM) attacks. In this method, the initiating device displays a randomly generated value, which the responding device has to enter. Particularly, after the central sends a _PairConfirmSend_ message, a prompt is shown on the peripheral device for passkey entry. In LE legacy pairing, the peripheral device shall send a _PairRandomSend_ only if the _confirm_ value ( $\mathsf{C_{cmp}}$ ) computed on the device matches the _confirm_ value ( $\mathsf{C_{rcv}}$ ) received from the central device , i.e., when $\mathsf{C_{cmp} = C_{rcv}}$. If $\mathsf{C_{cmp} \neq C_{rcv}}$, then the responding device would terminate the pairing. **BLEDiff**, however, has uncovered 13 implementations where the device completes pairing and bonding without requiring to enter the passkey in the device and  thereby effectively nullifying all the security protections against MitM attacks.  
 
-<p align="center">
-  <img src="assets/figures/ble-issue4.png" alt="Passkey entry bypass"/> <br>
+<div align="center">
+  <img src="assets/figures/ble-issue4.png" alt="Passkey entry bypass" align="center"/> <br>
   Fig.: Passkey entry bypass
-</p>
+</div>
+
 
 In this deviation, if the central sends a _PairRandomSend_, setting the value of the user input passkey to zero, the deviating BLE peripheral implementation responds with a _PairRandomSend_, without sending a _PairConfirmSend_ message and even before taking the input from the user (deviating from the standards). The connection persists even after the user inputs the passkey after an attack with the deviation is performed. Furthermore, the peripheral implementation completes the pairing and bonding process and enables encryption, all assuming the user input to be zero. Surprisingly, one of the devices (Pixel 4a) does not even show the prompt for passkey entry, thus effectively bypassing the MitM protection put into place through the passkey entry association method.  
 
