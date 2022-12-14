@@ -9,7 +9,7 @@ The Bluetooth Low Energy (BLE) is regarded as the most popular short range wirel
 # BLEDiff has been accepted to IEEE S&P 2023
 
 ## Identified Vulnerabilities
-Due to responsible disclosure, we are not releasing the details of the vulnerabilities yet. We will provide the details of the identified vulnerabilities when the responsible disclosure process is complete.
+Due to responsible disclosure, we are not releasing the details of the vulnerabilities yet. We will provide the details of the identified vulnerabilities when the responsible disclosure process is complete.  
 
 ## Affected Devices
 Due to responsible disclosure, we are not releasing the details of the affected devices yet. We will provide the details of the affected devices and corresponding issues when the responsible disclosure process is complete.
