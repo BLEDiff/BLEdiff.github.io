@@ -159,6 +159,23 @@ a {
   }
 }
 
+.project-auth {
+  font-weight: normal;
+  opacity: 0.7;
+
+  @include large {
+    font-size: 1.25rem;
+  }
+
+  @include medium {
+    font-size: 1.15rem;
+  }
+
+  @include small {
+    font-size: 1rem;
+  }
+}
+
 .main-content {
   word-wrap: break-word;
 

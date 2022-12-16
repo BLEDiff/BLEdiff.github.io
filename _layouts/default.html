@@ -18,7 +18,10 @@
 
     <header class="page-header" role="banner">
       <h1 class="project-name">{{ site.title | default: site.github.repository_name }}</h1>
-      <h2 class="project-tagline">{{ site.description | default: site.github.project_tagline }}</h2>
+      <!-- <h2 class="project-tagline">{{ site.description | default: site.github.project_tagline }}</h2> -->
+      <h2>{{ site.description | default: site.github.project_tagline }}</h2>
+      <h4 class="project-auth">Imtiaz Karim<sup>1</sup>, Abdullah Al Ishtiaq<sup>2</sup>, Syed Rafiul Hussain<sup>2</sup>, Elisa Bertino<sup>1</sup></h4>
+      <h4 class="project-auth"><sup>1</sup>Purdue University, <sup>2</sup>Pennsylvania State University </h4>
       {% if site.github.is_project_page %}
         <a href="{{ site.github.code_repository_url }}" class="btn">View on GitHub</a>
       {% endif %}

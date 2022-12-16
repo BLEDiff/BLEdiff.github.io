@@ -14,9 +14,9 @@ Among the four association methods, passkey entry is considered secure against M
 
 <p align="justify">
 In this deviation, if the central sends a <i>PairRandomSend</i>, setting the value of the user input passkey to zero, the deviating BLE peripheral implementation responds with a <i>PairRandomSend</i>, without sending a <i>PairConfirmSend</i> message and even before taking the input from the user (deviating from the standards). The connection persists even after the user inputs the passkey after an attack with the deviation is performed. Furthermore, the peripheral implementation completes the pairing and bonding process and enables encryption, all assuming the user input to be zero. Surprisingly, one of the devices (Pixel 4a) does not even show the prompt for passkey entry, thus effectively bypassing the MitM protection put into place through the passkey entry association method. This issue has been assigned .  
-<br>
+<h4>Root cause</h4>
 The root cause of this issue can be attributed to implementation deviating from the specification. The BLE specification clearly states that if the confirm values do not match, the peripheral should not proceed with pairing. 
-<br>
+<h4>Impact</h4>
 Due to this passkey entry bypass, it is possible for the attacker to perform a MitM attack on the vulnerable BLE devices. As the key value, <i>TK</i>, is always set to zero for the vulnerable peripheral, the attacker can impersonate both legitimate central and peripheral devices. In a hindsight, this is actually worse than just works association method as the user thinks they are using a high level of protection, but actually, they are not.
 </p>
 
@@ -34,8 +34,9 @@ During pairing, an out-of-band (OOB) channel, e.g., NFC may be used to communica
 </div>
 
 <p align="justify">
+<h4>Root cause</h4>
 The root cause of this issue is that the implementation is deviating from standards. In the specification, it is mandated that if the confirm value received from OOB does not match the calculated value, the peripheral will abort the pairing process
-<br>
+<h4>Impact</h4>
 An attacker in the radio range can abuse this vulnerability to completely bypass OOB authentication in the affected BLE devices, which rely on secure connections with out-of-band data to protect user privacy.  As the OOB authentication is bypassed, an attacker can send the usual BLE packets, impersonate both the legitimate central and peripheral, and perform MitM attacks on BLE connections. 
 </p>
 
@@ -52,6 +53,7 @@ In this deviation, it is possible to bypass the legacy pairing procedure and sta
 </div>
 
 <p align="justify">
+<h4>Impact</h4>
 There are two impacts of this deviation. The first impact is that it can cause security bypass due to low-entropy key size. The <i>STK</i>is generated using <i>s1 = (k, r1, r2)</i>. Each of these parameters are 128-bit long. In the key generation phase, 64 bits of <i>r1</i> and 64 bits of <i>r2</i> are discarded to create a 128-bit input, which together with <i>k</i> generates the <i>STK</i>. In case the pairing procedures are bypassed, and with no input and no output capability (<i>k=0</i>), the implementation generates a key with only the 64-bits of <i>r2</i>, thus generating a key with much smaller entropy. This can potentially lead to a security bypass. For other I/O capabilities, the entropy will be higher with different <i>k</i> value, but lower than the envisioned entropy when random values are exchanged. The second impact is DoS. As part of pairing can be bypassed (including authentication), an attacker can start encryption without completing the authentication. In case the attacker is unable to figure out the low-entropy key, there is a key-mismatch and the connection is dropped. Since  an attacker can drop a connection without authentication, this can cause a DoS.
 
 </p>
@@ -69,6 +71,7 @@ In this deviation, during BLE secure pairing, the BLE implementations respond  t
 </div>
 
 <p align="justify">
+<h4>Impact</h4>
 Due to this noncompliance, it is possible for an attacker to inject the <i>DHKeyCheckSend</i> packet with <i>MacKey, Na</i>, and <i>Nb</i> set to zero during the pairing procedure, forcing the vulnerable device to stop communicating with a specific central device and causing DoS. Furthermore, this deviation can be a stepping stone for a much more severe issue as illustrated below. After <i>DHKeyCheckSend</i>, the encryption procedure is started which uses the generated <i>LTK</i> to encrypt subsequent packets. The task of the <i>DHKeyCheckSend</i> is to ensure the right key is generated. In case <i>DHKeyCheckSend</i> fails, the subsequent <i>LTK</i> is discarded due to security reasons. Since it is possible to bypass <i>DHKeyCheckSend</i> by setting <i>MacKey, Na</i>, and <i>Nb</i> to zero, the attacker may exploit it to bypass the security partially as well.
 
 </p>
@@ -79,7 +82,7 @@ Due to this noncompliance, it is possible for an attacker to inject the <i>DHKey
 
 <p align="justify">
 The deviation happens when a BLE device receives a plaintext <i>PauseEncResp</i>. Even before pairing, if the BLE implementation receives <i>PauseEncRespPlainText</i>, then it crashes and becomes unresponsive. This is a clear deviation from the standards. In case a device handles an invalid packet, there are three ways to handle it (i) ignoring the packet, (ii) sending rejection, (iii) terminating the connection. However, in this case, the packet causes a fault in the implementation.
-<br>
+<h4>Impact</h4>
 It is possible to cause DoS by sending this packet to the implementation. The packet is plaintext and does not have integrity protection; therefore, it can be sent by an attacker anytime to an existing  BLE connection. Moreover, the packet does not show any prompt on the smartphone and turns off the Bluetooth for some time. It seems the packet causes restart of the Bluetooth daemon of the device. Therefore, sending such packets in a loop can create permanent DoS without any notification to the user.
 </p>
 
@@ -88,7 +91,7 @@ It is possible to cause DoS by sending this packet to the implementation. The pa
 
 <p align="justify">
 When a device receives a <i>ConReq</i> with the <i>timeout</i> field set to zero, the device becomes completely unresponsive. A user has to manually turn on the Bluetooth service to make the device responsive. A similar attack with invalid connection requests was shown in <a href="https://asset-group.github.io/disclosures/sweyntooth/"> SweynTooth </a> on two development boards. We have found this issue in 5 different smartphones and 3 different development boards. Furthermore, in their attack for the invalid connection request, both the interval and timeout fields have to be set to zero. In our case, the interval field does not matter; as long as the timeout field is set to zero, the device becomes unresponsive and automatically turns off Bluetooth.
-<br>
+<h4>Impact</h4>
 An attacker in the radio range can exploit the issue to cause a surreptitious denial of service of the Bluetooth. Though this attack is on BLE, the smartphone turns off both BLE and BR/EDR without notifying the user. To resolve this, the user has to manually restart BLE and, in some cases, the smartphone altogether.
 </p>
 
@@ -98,7 +101,7 @@ An attacker in the radio range can exploit the issue to cause a surreptitious de
 
 <p align="justify">
 In this deviation, the device responds with a <i>PauseEncResp</i> in case a plaintext <i>PauseEncReq</i> is sent. As a result, the affected device moves to an incorrect  state of the implementation where it is not able to complete pairing and not able to communicate with a specific central device. As stated in the previous section, responding to an invalid message is a noncompliance. We found this issue in 5 different BLE implementations.
-<br>
+<h4>Impact</h4>
 The implementation goes to an incorrect state and  discards subsequent messages from the central. The deviation thus enables an attacker to induce DoS attacks on the affected devices. An correctly implemented device ignores plaintext <i>PauseEncReq</i> messages and does not change state.
 </p>
 
