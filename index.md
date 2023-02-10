@@ -6,7 +6,7 @@ The Bluetooth Low Energy (BLE) is regarded as the most popular short range wirel
 
 **BLEDiff** provides an automated black-box noncompliance checking framework for BLE devices and identifies several security issues in the tested devices.
 
-## BLEDiff has been accepted to IEEE S&P 2023  
+## [BLEDiff has been accepted to IEEE S&P 2023](https://www.computer.org/csdl/proceedings-article/sp/2023/933600b082/1Js0DDrcl20)  
 
 
 ## CVE Updates
