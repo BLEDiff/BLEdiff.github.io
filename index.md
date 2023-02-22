@@ -9,41 +9,6 @@ The Bluetooth Low Energy (BLE) is regarded as the most popular short range wirel
 ## [BLEDiff has been accepted to IEEE S&P 2023](https://www.computer.org/csdl/proceedings-article/sp/2023/933600b082/1Js0DDrcl20)  
 
 
-## CVE Updates
-### CVE-2022-45190
-- Affected Product: Microchip Technology BLE peripheral implementation.
-- Version: RN4870 - v1.43
-- CVE ID: CVE-2022-45190
-- Description: An attacker within BLE radio range can bypass passkey entry in the legacy pairing of the device.
-- Root Cause: The root cause of this issue can be attributed to implementation deviating from the specification. The BLE specification clearly states that if the confirm values do not match, the peripheral should not proceed with pairing.
-- Impact: Due to this passkey entry bypass, it is possible for the attacker to perform a MitM attack on the vulnerable BLE devices.
-
-
-### CVE-2022-40480
-- Affected Product: Nordic Semiconductor, Microchip Technology
-- Version: NRF5340-DK - DT100112
-- CVE ID: CVE-2022-40480
-- Description:  Nordic Semiconductor, Microchip Technology NRF5340-DK DT100112 was discovered to contain an issue which allows attackers to cause a Denial of Service (DoS) via a crafted ConReq packet.
-- Root Cause: The root cause of this issue can be attributed to implementation deviating from the specification. 
-- Impact: An attacker in the radio range can exploit the issue to cause a surreptitious denial of service of the Bluetooth. Though this attack is on BLE, the smartphone turns off both BLE and BR/EDR without notifying the user. To resolve this, the user has to manually restart BLE and, in some cases, the smartphone altogether.
-
-### CVE-2022-45192
-- Affected Product: Microchip Technology BLE peripheral implementation.
-- Version: RN4870 - v1.43
-- CVE ID: CVE-2022-45192
-- Description: An attacker within BLE radio range can cause a denial of service by sending a cleartext encryption pause request.
-- Root Cause: The root cause of this issue can be attributed to implementation deviating from the specification. 
-- Impact: The implementation goes to an incorrect state and discards subsequent messages from the central. The deviation thus enables an attacker to induce DoS attacks on the affected devices. An correctly implemented device ignores plaintext PauseEncReq messages and does not change state.
-
-
-### CVE-2022-45191
-- Affected Product: Microchip Technology BLE peripheral implementation.
-- Version: RN4870 - v1.43
-- CVE ID: CVE-2022-45191
-- Description:  An attacker within BLE radio range can cause a denial of service by sending a pair confirm message with wrong values.
-- Root Cause: The root cause of this issue can be attributed to implementation deviating from the specification. 
-- Impact: An attacker within the radio range of another BLE implementation can cause a denial of service by sending a pair confirm message with wrong values.
-
 
 ## Identified Vulnerabilities
 
