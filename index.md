@@ -40,4 +40,4 @@ The Bluetooth Low Energy (BLE) is regarded as the most popular short range wirel
 
 <h2> Open Source Implementation </h2>
 
-Due to responsible disclosure, we are not releasing the implementation of BLEDiff yet. We will provide the open sourced implementation at the [github repository](https://github.com/BLEDiff/BLEDiff) when the responsible disclosure process is complete.
+BLEDiff has been completely open-sourced at the [github repository](https://github.com/BLEDiff/BLEDiff). Please contact the authors with any issues.
